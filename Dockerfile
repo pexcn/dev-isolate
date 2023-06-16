@@ -20,8 +20,8 @@ RUN case "$(dpkg --print-architecture)" in \
   && chmod +x /usr/local/bin/tcping
 
 # install docker
-ARG DOCKER_VERSION=20.10.21
-ARG COMPOSE_VERSION=v2.12.2
+ARG DOCKER_VERSION=24.0.2
+ARG COMPOSE_VERSION=v2.18.1
 RUN case "$(dpkg --print-architecture)" in \
        amd64) arch="x86_64";; \
        *) arch="aarch64";; \
