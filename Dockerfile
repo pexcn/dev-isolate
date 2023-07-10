@@ -7,7 +7,7 @@ FROM pexcn/docker-images:dev
 # install packages
 RUN apt-get update \
   && apt-get install --no-install-recommends -y \
-      iputils-ping lrzsz tcpdump zip unzip \
+      iputils-ping lrzsz tcpdump zip unzip bzip2 \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
 
