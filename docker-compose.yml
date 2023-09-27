@@ -17,4 +17,5 @@ services:
       GIT_EMAIL: mail@example.com
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /var/run/host-pipe-bridge:/var/run/host-pipe-bridge
       - /data:/data

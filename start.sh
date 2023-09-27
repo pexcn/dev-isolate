@@ -30,8 +30,23 @@ append_user_to_docker() {
   usermod -aG docker $username
 }
 
+prebuilt_commands() {
+  # start-dir-protect
+  cat <<-EOF >/usr/local/bin/start-dir-protect
+	echo "cd /opt/WGClt && ./run.sh start" > /var/run/host-pipe-bridge
+	EOF
+  chmod +x /usr/local/bin/start-dir-protect
+
+  # stop-dir-protect
+  cat <<-EOF >/usr/local/bin/stop-dir-protect
+	echo "cd /opt/WGClt && ./run.sh stop" > /var/run/host-pipe-bridge
+	EOF
+  chmod +x /usr/local/bin/stop-dir-protect
+}
+
 ! is_initialized || { info "container already initialized, skip."; exit 0; }
 create_user $USERNAME $PASSWORD
 set_root_password $ROOT_PASSWORD
 append_user_to_docker $USERNAME
+prebuilt_commands
 mark_initialized
