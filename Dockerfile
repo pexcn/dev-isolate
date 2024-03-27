@@ -12,12 +12,13 @@ RUN apt-get update \
   && rm -rf /var/lib/apt/lists/*
 
 # install tcping
+ARG TCPING_VER=v0.1.1
 RUN case "$(dpkg --print-architecture)" in \
        amd64) arch="amd64";; \
        *) arch="arm64";; \
     esac \
-  && curl https://github.com/pexcn/share/raw/master/bin/tcping/tcping-${arch} -L -o /usr/local/bin/tcping \
-  && chmod +x /usr/local/bin/tcping
+  && curl -L https://github.com/pexcn/tcping/releases/download/${TCPING_VER}/tcping-linux-${arch}-dev.tar.gz | \
+      tar zxv -C /usr/local/bin/ linux-${arch}/tcping --strip-components 1
 
 # install docker
 ARG DOCKER_VERSION=24.0.2
