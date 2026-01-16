@@ -11,7 +11,7 @@ mark_initialized() {
 
 create_user() {
   local username="$1"
-  local password=$(echo "$2" | openssl passwd -crypt -stdin)
+  local password=$(echo "$2" | openssl passwd -6 -stdin)
   local uid=10000
   local gid=10000
   groupadd $username --gid $gid
