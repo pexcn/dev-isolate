@@ -20,7 +20,7 @@ create_user() {
 }
 
 set_root_password() {
-  local password=$(echo "$1" | openssl passwd -crypt -stdin)
+  local password=$(echo "$1" | openssl passwd -6 -stdin)
   usermod -p $password root
 }
 
