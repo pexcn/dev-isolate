@@ -21,8 +21,8 @@ RUN case "$(dpkg --print-architecture)" in \
       tar zxv -C /usr/local/bin/ linux-${arch}/tcping --strip-components 1
 
 # install docker
-ARG DOCKER_VERSION=24.0.2
-ARG COMPOSE_VERSION=v2.18.1
+ARG DOCKER_VERSION=29.1.4
+ARG COMPOSE_VERSION=v2.40.3
 RUN case "$(dpkg --print-architecture)" in \
        amd64) arch="x86_64";; \
        *) arch="aarch64";; \
