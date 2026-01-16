@@ -33,7 +33,7 @@ RUN case "$(dpkg --print-architecture)" in \
   && chmod +x /usr/local/bin/docker-compose
 
 # allow root login
-RUN sed -i 's/^.*PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
+RUN sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
 
 COPY start.sh /usr/local/bin/
 
